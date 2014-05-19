@@ -1,0 +1,4 @@
+JavaPratices
+============
+
+Java Pratices
