@@ -70,8 +70,8 @@ public class Chapter5 {
 	public static String getMonthAndDay(long day, boolean isLeap){
 		int daysCount[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 		final String monthsCount[] = {"January", "February", "March", "April",
-            "May", "June", "July", "Auguest", "September", 
-            "October", "November", "December"};
+                                      "May", "June", "July", "Auguest", "September", 
+                                      "October", "November", "December"};
 		if(isLeap)
 			daysCount[1] = 29;
 		int count = daysCount[0];
