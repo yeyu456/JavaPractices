@@ -122,6 +122,6 @@ public class Chapter4 {
 		long startTime=System.nanoTime();
 		t434();
 		long endTime=System.nanoTime();
-		System.out.println("程序运行时间： " + (endTime-startTime) + "ns");
+		System.out.println("Process running time " + (endTime-startTime) + "ns");
 	}
 }
