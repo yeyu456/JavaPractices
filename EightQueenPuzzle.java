@@ -14,7 +14,7 @@ public class EightQueenPuzzle{
 		int columNum = 0;          //columNum, indicate the current column number
 		while(index<8){            //index, which indicate the current row number
 			columNum = status[index];
-			if(status[index]==8){  //sometimes the number stored in "status" casually be 8, when
+			if(status[index]==8){  //sometimes the number stored in "status" was 8, when
 				status[index] = 0; //the matching column was 7. When back to this index, should 
 				index--; 	       //go back to last row again.
 				continue;
@@ -32,8 +32,8 @@ public class EightQueenPuzzle{
 					columNum++;
 			}
 			if(columNum==8){       //when all the column had been searched and no one matched,
-				status[index] = 0; //go back to last row.
-				index--;
+				status[index] = 0; 
+				index--;          //go back to last row.
 			}
 			
 			//when get a result, print it and back to the last index
