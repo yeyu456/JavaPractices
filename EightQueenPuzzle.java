@@ -5,23 +5,18 @@ public class EightQueenPuzzle{
 		int[] pos = new int[8];
 		int[] p = new int[8];
 		int[] m = new int[8];
-		calPos(0, pos, p, m, 2);
+		calPos(0, pos, p, m, 92);
 	}
 	
 	public static void calPos(int index, int[] pos, int[] p, int[] m, int resultNum){
-		int result=0; //resultNum, how much result you want to print
-		int[] status = new int[8]; //store the column number when next time to search on every row
-		int columNum = 0; //indicate the current column number
-		while(index<8){ //index, which indicate the current row number
-			if(columNum==8){ 
-				status[index] = 0;
-				index--;
-			}
+		int result=0;              //resultNum, how much result you want to print
+		int[] status = new int[8]; //status, store the column number next time to be searched
+		int columNum = 0;          //columNum, indicate the current column number
+		while(index<8){            //index, which indicate the current row number
 			columNum = status[index];
-			if(status[index]==8){
-				status[index] = 0;
-				index--;
-				columNum = 0;
+			if(status[index]==8){  //sometimes the number stored in "status" casually be 8, when
+				status[index] = 0; //the matching column was 7. When back to this index, should 
+				index--; 	       //go back to last row again.
 				continue;
 			}
 			while(columNum<8){
@@ -29,19 +24,24 @@ public class EightQueenPuzzle{
 				p[index] = index + columNum;
 				m[index] = index - columNum;
 				if(!canAttackOrNot(index, pos, p, m)){
-					status[index] = columNum + 1;
+					status[index] = columNum + 1;  
 					index++;
 					break;
 				}
 				else
 					columNum++;
 			}
+			if(columNum==8){       //when all the column had been searched and no one matched,
+				status[index] = 0; //go back to last row.
+				index--;
+			}
 			
+			//when get a result, print it and back to the last index
 			if(index==8){
 				for(int n:pos){
 		        	  System.out.print(n + " ");
 		          }
-		          System.out.println(" ");
+		        System.out.println(" ");
 		        displayPos(pos);
 				result++;
 				index--;
