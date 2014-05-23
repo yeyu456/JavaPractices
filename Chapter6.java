@@ -61,10 +61,68 @@ public class Chapter6 {
 		}
 	}
 	
-
+/*******************************t621*************************/
+	//bean machine
+	public static void t621(){
+		System.out.print("Enter the slot numbers.");
+		Scanner scn = new Scanner(System.in);
+		int slotNum = scn.nextInt();
+		System.out.print("\nEnter the ball numbers.");
+		int ballNum = scn.nextInt();
+		scn.close();
+		beanMachine(slotNum, ballNum);
+	}
+	
+	public static void beanMachine(int slotNum, int ballNum){
+		int[] slots = new int[slotNum];
+		int maxBall = 0;
+		for(int n=0;n<ballNum;n++){
+			int dropNum = 0;
+			for(int s=0;s<slotNum-1;s++){
+				dropNum = getNextSlotNum(dropNum);
+			}
+			try{
+			slots[dropNum]++;
+			} catch(ArrayIndexOutOfBoundsException e){
+				System.out.println(dropNum);
+			}
+			if(maxBall<slots[dropNum]){
+				maxBall = slots[dropNum];
+			}
+			System.out.print("\n");
+		}
+		displaySlots(slots, maxBall);
+	}
+	
+	public static int getNextSlotNum(int lastDropNum){
+		int dropSlotNum = (int)(Math.random() * 2);
+		if(dropSlotNum==0)
+			System.out.print("L");
+		else
+			System.out.print("R");
+		return (dropSlotNum + lastDropNum);
+	}
+	
+	public static void displaySlots(int[] slots, int maxBallInOneSlot){
+		while(maxBallInOneSlot>0){
+			for(int n=0;n<slots.length;n++){
+				if(slots[n]==maxBallInOneSlot){
+					System.out.print("O");
+					slots[n]--;
+					assert (slots[n]>=0);
+				}
+				else{
+					System.out.print(" ");
+				}
+			}
+			maxBallInOneSlot--;
+			System.out.println("");
+		}
+	}
+	
 	public static void main(String[] args){
 		long startTime=System.nanoTime();
-		t63();
+		t621();
 		long endTime=System.nanoTime();
 		System.out.println("Process running time: " + (endTime-startTime) + "ns");
 	}
