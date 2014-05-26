@@ -1,4 +1,3 @@
-import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -28,16 +27,17 @@ final static int horizontalNum = 3; // horizontal length of chess table
 	public static void t79(){
 		int[][] chessTable = new int[verticalNum][horizontalNum]; // define a chess table
 		int stepNum = 0;
-		assert (chessNum <= verticalNum) || (chessNum <= horizontalNum);
-		do{
-			playGame(chessTable, stepNum%2);
-			printGame(chessTable);
-			stepNum++;
-			if(stepNum == verticalNum * horizontalNum){
-				System.out.println("You are equal.");
-				break;
-			}
-		}while(!winOrNot(chessTable, chessNum));
+		if((chessNum <= verticalNum)&&(chessNum <= horizontalNum)){
+			do{
+				playGame(chessTable, stepNum%2);
+				printGame(chessTable);
+				stepNum++;
+				if(stepNum == verticalNum * horizontalNum){
+					System.out.println("You are equal.");
+					break;
+				}
+			}while(!winOrNot(chessTable, chessNum));
+		}
 	}
 	
 	public static void playGame(int[][] input, int player){
@@ -50,12 +50,14 @@ final static int horizontalNum = 3; // horizontal length of chess table
 							   player+1, horizontalNum);
 			int columnNum = scn.nextInt();
 			if(wrongStep(input, rowNum, columnNum)){
+				scn.close();
 				continue;
 			}
 			if(player==0)
 				input[rowNum-1][columnNum-1] = 1; //when player1 play, set the chess number 1
 			else
 				input[rowNum-1][columnNum-1] = 9; //when player2 play, set the chess number 9
+			scn.close();
 			break;
 		}
 	}
