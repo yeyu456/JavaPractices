@@ -25,7 +25,7 @@ public class Chapter9_2 {
 					swap[1] = swap[1].replaceFirst("\\{", "");
 				}
 				if(!swap[0].matches("^\\s*$"))
-					fw.write(swap[0] + "\r\n");
+					fw.write(swap[0] + System.getProperty("line.separator"));
 				fw.flush();
 				swap[0] = swap[1];
 				swap[1] = "";
