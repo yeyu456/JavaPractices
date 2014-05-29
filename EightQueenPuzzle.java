@@ -41,17 +41,19 @@ public class EightQueenPuzzle{
 		          }
 		        System.out.println(" ");
 		        displayPos(pos);
-				result++;
-				index--;
-				if(result==resultNum||result==92)
-					break;
+			result++;
+			index--;
+			if(result==resultNum||result==92)
+				break;
 			}
 		}
 	}
 	
 	public static boolean canAttackOrNot(int index, int[] pos){
 		for(int n=0;n<index;n++){
-			if ((pos[index]==pos[n]) || (n+pos[n]==index+pos[index]) || (n-pos[n]==index-pos[index]))
+			if ((pos[index]==pos[n]) 
+			|| (n+pos[n]==index+pos[index]) 
+			|| (n-pos[n]==index-pos[index]))
 				return true;
 		}
 		return false;
@@ -77,6 +79,7 @@ public class EightQueenPuzzle{
 		long startTime=System.nanoTime();
 		t620();
 		long endTime=System.nanoTime();
-		System.out.println("Process running time: " + (endTime-startTime) + "ns");
+		System.out.println("Process running time: " 
+				   + (endTime-startTime) + "ns");
 	}
 }
