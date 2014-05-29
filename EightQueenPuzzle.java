@@ -3,12 +3,10 @@ public class EightQueenPuzzle{
 	public static void t620(){
 		//Eight Queens Puzzle
 		int[] pos = new int[8];
-		int[] p = new int[8];
-		int[] m = new int[8];
-		calPos(0, pos, p, m, 92);
+		calPos(0, pos, 92);
 	}
 	
-	public static void calPos(int index, int[] pos, int[] p, int[] m, int resultNum){
+	public static void calPos(int index, int[] pos, int resultNum){
 		int result=0;              //resultNum, how much result you want to print
 		int[] status = new int[8]; //status, store the column number next time to be searched
 		int columNum = 0;          //columNum, indicate the current column number
