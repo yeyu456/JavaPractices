@@ -40,7 +40,7 @@ public class EightQueenPuzzle{
 		        	  System.out.print(n + " ");
 		          }
 		        System.out.println(" ");
-		        //displayPos(pos);
+		        displayPos(pos);
 				result++;
 				index--;
 				if(result==resultNum||result==92)
