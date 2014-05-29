@@ -14,7 +14,7 @@ public class EightQueenPuzzle{
 			columNum = status[index];
 			if(status[index]==8){  //sometimes the number stored in "status" casually be 8, when
 				status[index] = 0; //the matching column was 7. When back to this index, should 
-				index--; 	       //go back to last row again.
+				index--; 	       //go back to last row oncemore.
 				continue;
 			}
 			while(columNum<8){
