@@ -5,14 +5,8 @@ public class ChessGame {
 /***********************t79******************************/
 
 public static final int[][] vectors ={
-        {-1, -1},
-        {-1, 0},
-        {-1, 1},
-        {0, -1},
-        {0, 1},
-        {1, -1},
-        {1, 0},
-        {1, 1}
+        {-1, -1}, {-1, 0}, {-1, 1}, {0, -1},
+        {0, 1}, {1, -1}, {1, 0}, {1, 1}
 }; //vector to get position of eight directions 
 
 final static int chessNum = 3;
