@@ -8,7 +8,6 @@ import java.io.IOException;
 public class JavaToHtml {
     public static void main(String[] args){
         JTH test = new JTH();
-        int count = 1;
         try(BufferedReader br = new BufferedReader(new FileReader(args[0]))){
             FileWriter fw = new FileWriter(args[1]);
             fw.write(test.htmlHeader);
@@ -18,7 +17,6 @@ public class JavaToHtml {
                 fw.write(test.translate(line));
                 fw.flush();
                 line = br.readLine();
-                count++;
             }
             fw.write(test.htmlTailer);
             fw.flush();
@@ -56,28 +54,29 @@ class JTH {
         boolean isComment = false;
         String newLine = rowHeader;
         String temp = "";
-        line = line.replaceAll("\t", "\\s{4}").replaceAll("\\s", "&nbsp;");
-        String[] word = line.split("&nbsp;");
+        line = line.replaceAll("\t", "\\s{4}")
+                .replaceAll("\\s", "&nbsp;");  //translate the tab to 4 space.
+        String[] word = line.split("&nbsp;");  //use space in html insteads of that in java 
         for(String s:word){
-            s = s.replace(">", "&gt;");
-            s = s.replace("<", "&lt;");
+            s = s.replace(">", "&gt;"); //use ‘>’ Escape Character in html 
+            s = s.replace("<", "&lt;"); //use ‘<’ Escape Character in html 
             if(!isComment){
-                if(s.contains("//")){
+                if(s.contains("//")){  //when the string is a comment
                     isComment = true;
                     temp = s.replaceFirst("//", typeForComment + "//");
                 }
                 else
-                    if(s.contains("\"")){
+                    if(s.contains("\"")){ //when the string is a string
                         temp = this.stringCheck(s);
                     }
                     else{
-                        temp = this.keywordCheck(s);
-                        temp = this.dataCheck(temp);
+                        temp = this.keywordCheck(s); //check if it's a keyword
+                        temp = this.dataCheck(temp); //check if it's a data value
                     }
             }
             else{
-                if(isComment)
-                    temp = s;
+                if(isComment) //when the string in the line is a comment
+                    temp = s; 
             }
             newLine += "&nbsp;" + temp;
         }
