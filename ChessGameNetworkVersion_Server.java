@@ -194,7 +194,7 @@ class serverHandler implements Runnable{
             this.outputInt(EQUAL, this.outputForPlayer2);
             try{
                 TimeUnit.MILLISECONDS.sleep(500);  
-                //sleep 1 second while there is no data
+                //sleep to make sure data sended.
             }catch (InterruptedException e){
                 e.printStackTrace();
             }
@@ -205,7 +205,7 @@ class serverHandler implements Runnable{
                 if(getSum(input, n, s, markNum)){
                 try{
                     TimeUnit.MILLISECONDS.sleep(500); 
-                    //sleep 1 second while there is no data
+                    //sleep to make sure data sended.
                 }catch (InterruptedException e){
                     e.printStackTrace();
                 }
