@@ -11,13 +11,11 @@ public class ChessGameNetworkVersion_Server {
     public static void server(){
         try{
             ServerSocket ss = new ServerSocket(PORT);
-        //while(true){
-                Socket p1 = ss.accept();
-                Socket p2 = ss.accept();
-                serverHandler sh = new serverHandler(p1, p2);
-                new Thread(sh).start();
-                ss.close();
-            //}
+            Socket p1 = ss.accept();
+            Socket p2 = ss.accept();
+            serverHandler sh = new serverHandler(p1, p2);
+            new Thread(sh).start();
+            ss.close();
         }catch(IOException e){
             e.printStackTrace();
         }
@@ -37,8 +35,7 @@ class serverHandler implements Runnable{
     private final int STARTED_2 = 112;
     private final int EMPTY = 999;
     private final int INIT = 000;
-
-    //initial status
+    //status list
     
     private final static int[][] vectors ={
             {-1, -1}, {-1, 0}, {-1, 1}, {0, -1},
@@ -47,7 +44,7 @@ class serverHandler implements Runnable{
 
     private final static int chessNum = 5;
     /* 
-    3 chess game, AKA tick tack toe game.You can change to any number 
+    5 chess game, AKA tick tack toe game.You can change to any number 
     that is less than verticalNum or horizontalNum.
     */
 
