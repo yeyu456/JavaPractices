@@ -63,10 +63,7 @@ class clientHandler implements Runnable{
         Socket socket;
         
         try{
-            socket = new Socket("192.168.1.161", PORT);
-            socket.setTcpNoDelay(true);
-            socket.setSendBufferSize(16384);
-            socket.setReceiveBufferSize(16384);
+            socket = new Socket(HOST, PORT);
             playerInput = new DataInputStream(socket.getInputStream());
             playerOutput= new DataOutputStream(socket.getOutputStream());
             System.arraycopy(this.inputData(playerInput), 0, data, 0, 3);
@@ -102,7 +99,6 @@ class clientHandler implements Runnable{
     public void sendMove(int[] data, DataInputStream dinput, DataOutputStream dout){
         try{
             Scanner scn = new Scanner(System.in);
-            scn.reset();
             System.out.println("Enter the row num between (1 to " + verticalNum + ")");
             dout.writeInt(scn.nextInt());
             System.out.println("Enter the column num between (1 to " + verticalNum + ")");

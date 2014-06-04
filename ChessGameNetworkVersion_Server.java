@@ -143,7 +143,7 @@ class serverHandler implements Runnable{
             while(count<2){
                 if(dinput.available()==0){
                     try{
-                        TimeUnit.SECONDS.sleep(1); 
+                        TimeUnit.MILLISECONDS.sleep(500);
                         //sleep 1 second while there is no data
                     }catch (InterruptedException e){
                         e.printStackTrace();
@@ -190,7 +190,7 @@ class serverHandler implements Runnable{
             this.outputInt(EQUAL, this.outputForPlayer1);
             this.outputInt(EQUAL, this.outputForPlayer2);
             try{
-                TimeUnit.MILLISECONDS.sleep(500);  
+                TimeUnit.SECONDS.sleep(1);  
                 //sleep 1 second while there is no data
             }catch (InterruptedException e){
                 e.printStackTrace();
@@ -201,7 +201,7 @@ class serverHandler implements Runnable{
             for(int s=0;s<input[n].length;s++){
                 if(getSum(input, n, s, markNum)){
                 try{
-                    TimeUnit.MILLISECONDS.sleep(500); 
+                    TimeUnit.SECONDS.sleep(1);
                     //sleep 1 second while there is no data
                 }catch (InterruptedException e){
                     e.printStackTrace();
