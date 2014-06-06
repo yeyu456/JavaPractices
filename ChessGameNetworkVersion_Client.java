@@ -64,6 +64,7 @@ class clientHandler implements Runnable{
         
         try{
             socket = new Socket(HOST, PORT);
+            socket.setTcpNoDelay(true);
             playerInput = new DataInputStream(socket.getInputStream());
             playerOutput= new DataOutputStream(socket.getOutputStream());
             System.arraycopy(this.inputData(playerInput), 0, data, 0, 3);

@@ -92,6 +92,12 @@ class serverHandler implements Runnable{
             }
             stepNum++;
         }while(!winOrNot(this.chessTable, chessNum, stepNum));
+        try{
+            this.player1.close();
+            this.player2.close();
+        }catch(IOException e){
+            e.printStackTrace();
+        }
     }
 
     public void playGame(int[][] input, int player, DataInputStream dinput, DataOutputStream dout){
@@ -144,7 +150,7 @@ class serverHandler implements Runnable{
                 if(dinput.available()==0){
                     try{
                         TimeUnit.MILLISECONDS.sleep(500);
-                        //sleep 1 second while there is no data
+                        //sleep while there is no data
                     }catch (InterruptedException e){
                         e.printStackTrace();
                     }
@@ -189,23 +195,11 @@ class serverHandler implements Runnable{
         if(stepNum == verticalNum * horizontalNum){
             this.outputInt(EQUAL, this.outputForPlayer1);
             this.outputInt(EQUAL, this.outputForPlayer2);
-            try{
-                TimeUnit.SECONDS.sleep(1);  
-                //sleep 1 second while there is no data
-            }catch (InterruptedException e){
-                e.printStackTrace();
-            }
             return true;
         }
         for(int n=0;n<input.length;n++){
             for(int s=0;s<input[n].length;s++){
                 if(getSum(input, n, s, markNum)){
-                try{
-                    TimeUnit.SECONDS.sleep(1);
-                    //sleep 1 second while there is no data
-                }catch (InterruptedException e){
-                    e.printStackTrace();
-                }
                     return true;}
             }
         }
