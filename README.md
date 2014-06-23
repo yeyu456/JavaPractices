@@ -1,4 +1,4 @@
-JavaPratices
+JavaPractices
 ============
 
-Java Pratices
+Java Practices
